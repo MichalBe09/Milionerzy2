@@ -25,7 +25,7 @@ public class QuestionsDB {
         questionsDb.put("Jakie są najwyższe góry na świecie?", "Himalaje");
         questionsDb.put("Gdzie leży Arktyka?", "Wokół bieguna północnego");
         questionsDb.put("Jaki gaz o właściwościach wybuchowych wydziela się podczas ładowania akumulatorów kwasowych?", "Wodór");
-        questionsDb.put("Wstrząs jest to:","Stan niedotlenienia mózgu ");
+        questionsDb.put("Wstrząs jest to:","Stan niedotlenienia mózgu");
         questionsDb.put("Gaz propan-butan jest:", "Cięższy od powietrza");
         questionsDb.put("Hg to symbol:", "Rtęci");
         questionsDb.put("Jak reagują ze sobą ładunki różnoimienne?", "Przyciągają się");
