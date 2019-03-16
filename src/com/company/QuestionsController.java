@@ -78,7 +78,7 @@ public class QuestionsController {
                 }
             }
 
-            }while (!answer.equals(exit) && counter > 0);                     // gra trwa do momentu aż gracz sam ją zakończy
+            }while (!answer.equals(exit) && counter > 0);                     // gra trwa do momentu aż gracz sam ją zakończy, lub straci wszystkie punkty
         }
     }
 
