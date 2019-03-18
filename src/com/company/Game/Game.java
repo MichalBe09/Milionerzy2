@@ -4,10 +4,7 @@ import com.company.PointCounter;
 import com.company.konstruktory.Question;
 import com.company.baza_pytań.QuestionsDB;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Game {
     public String answer;           // String przechowujący poprawną odpowiedź
@@ -34,17 +31,24 @@ public class Game {
             String wrongAnswer1 = question.getAnswers().getAnswer1();       // pobieranie wartości jednej ze złych odpowiedzi
             String wrongAnswer2 = question.getAnswers().getAnswer2();       // pobieranie wartości jednej ze złych odpowiedzi
             String wrongAnswer3 = question.getAnswers().getAnswer3();       // pobieranie wartości jednej ze złych odpowiedzi
+
+            List<String> answers = new ArrayList<>();      // lista do której są wrzucane wygenerowane losowo odpowiedzi, będą następnie z niej drukowane randomowo
+            answers.add(rightAnswer);
+            answers.add(wrongAnswer1);
+            answers.add(wrongAnswer2);
+            answers.add(wrongAnswer3);
+            Collections.shuffle(answers);   // przetasowanie pozycji na liście aby je wydrukować w losowej kolejności
+
+
             System.out.println(communicates.answerPlease);
+            System.out.println();
             System.out.println(quest);          // drukowanie randomowo wylosowanego pytania
-
-
-            System.out.println("A. " + rightAnswer);        // drukowanie prawidlowej odpowiedzi
-            System.out.println("B. " + wrongAnswer1);       // drukowanie nieprawidlowej odpowiedzi
-            System.out.println("C. " + wrongAnswer2);       // drukowanie nieprawidlowej odpowiedzi
-            System.out.println("D. " + wrongAnswer3);       // drukowanie nieprawidlowej odpowiedzi
+            for (String answerss : answers){
+                System.out.println(answerss);}       // drukowanie propozycji pytań w losowej kolejności ( wcześniej drukowało w narzuconej kolejności, tak że pod "A." była zawsze prawidłowa odpowiedź
+            System.out.println();
+            System.out.println("Odpowiedź:");
             answer = scanner.nextLine();
             r = random.nextInt(10000);      // losowanie randomowej liczby, część mechanizmu pytań dodatkowych
-            System.out.println(r);
             if (answer.equals(rightAnswer) && r % 2 == 0) {     // sprawdzenie czy randomowa liczba spełnia warunki do wyświetlenia pytania zwodzącego, częstotliwością pojawiania się pytań można manipulować zmieniając na przykład modulo
                 System.out.println(communicates.areYouSure);    // jeśli liczba spełnia warunek, zostaje wydrukowane pytanie zwodzące
                 answer = scanner.nextLine();
@@ -74,7 +78,7 @@ public class Game {
             }
             else if (answer.equals(rightAnswer)) {
                 counter++;                                              // gdy udzielono dobrej odpowiedzi, dostajemy punkt
-                System.out.println(communicates.right+counter);
+                System.out.println(communicates.right+(counter-1));
             } else if (!answer.equals(rightAnswer) && r % 2 == 0) {     // sprawdzenie czy randomowa liczba spełnia warunki do wyświetlenia pytania pomocniczego, częstotliwością pojawiania się pytań można manipulować zmieniając na przykład modulo
                 System.out.println(communicates.areYouSure);
                 answer = scanner.nextLine();
